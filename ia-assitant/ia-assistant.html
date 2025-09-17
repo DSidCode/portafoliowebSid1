@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA Assistant - En construcción</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #0f0f1c, #1a1a2e);
+      color: #ffffffcc;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 700px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      color: #00ffd5;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .neon-box {
+      border: 2px solid #00ffd5;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00ffd588;
+      background-color: #1f1f2f;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 20px #00ffd588;
+      }
+      50% {
+        box-shadow: 0 0 40px #00ffd5cc;
+      }
+    }
+
+    .icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #00ffd5;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #ffffff;
+    }
+
+    .glow-text {
+      color: #ffffff;
+      text-shadow: 0 0 10px #00ffd5, 0 0 20px #00ffd5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="neon-box">
+      <div class="icon">🤖✨</div>
+      <h1 class="glow-text">IA Assistant en construcción</h1>
+      <p>
+        Estamos desarrollando una herramienta web que combina inteligencia artificial y diseño para ayudarte a crear contenido visual y textual mediante las APIs de <strong>OpenAI</strong>.
+      </p>
+      <p>Pronto disponible en:</p>
+      <a href="https://danisid.com/ia-assistant" target="_blank">🔗 danisid.com/ia-assistant</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Diseño Humano - Daniel Hernán García Alzate</title>
+    <style>
+        :root {
+            --primary: #6a4c93;
+            --secondary: #8a5a44;
+            --accent: #f8bbd0;
+            --light: #f9f9f9;
+            --dark: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--secondary);
+            border-left: 4px solid var(--accent);
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: var(--primary);
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .profile-item {
+            background: var(--light);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-item strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .gates-list {
+            columns: 3;
+            column-gap: 20px;
+        }
+
+        .gate-item {
+            break-inside: avoid;
+            margin-bottom: 10px;
+            background: var(--light);
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .gate-number {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .quote {
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+            background: var(--accent);
+            border-radius: 8px;
+            margin: 30px 0;
+            color: var(--dark);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gates-list {
+                columns: 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gates-list {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Daniel Hernán García Alzate</h1>
+            <h2>Análisis Profundo de Diseño Humano</h2>
+            <p>Cuerpo gráfico Diseño Humano</p>
+        </header>
+
+        <div class="card">
+            <h2>Información Básica</h2>
+            <div class="profile-grid">
+                <div class="profile-item">
+                    <strong>Tipo</strong>
+                    <span>Proyector</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Autoridad</strong>
+                    <span>Emocional (Plexo Solar)</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Perfil</strong>
+                    <span>4/6</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Definición</strong>
+                    <span>Partida Triple</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Tipo: Proyector</h2>
+            <h3>Estrategia</h3>
+            <p>Esperar a ser invitado. Los proyectores están diseñados para guiar y dirigir a otros, pero su éxito depende de ser reconocidos e invitados a participar. Si actúan sin invitación, pueden experimentar rechazo y amargura.</p>
+            <p><strong>Consejo:</strong> Daniel debe esperar a que se le invite antes de compartir su sabiduría o tomar decisiones importantes. Esto asegura que su energía sea bien recibida y valorada.</p>
+
+            <h3>Autoridad: Emocional (Plexo Solar)</h3>
+            <p>Toma decisiones basadas en su claridad emocional, que fluctúa en olas.</p>
+            <p><strong>Consejo:</strong> Evitar decidir en estados emocionales extremos (euforia o tristeza). Esperar a que la ola emocional se estabilice para obtener claridad.</p>
+
+            <h3>Perfil: 4/6 (Oportunista/Rol Modelo)</h3>
+            <p><strong>Línea 4 (Oportunista):</strong> Habilidad para conectar con redes y comunidades. Su influencia se expande a través de relaciones auténticas.</p>
+            <p><strong>Línea 6 (Rol Modelo):</strong> Vida dividida en 3 fases: experimental (0-30 años), observadora (30-50) y de liderazgo (post-50). En la última etapa, se convierte en un referente natural.</p>
+            <p><strong>Consejo:</strong> Enfocarse en construir relaciones sólidas en su red y confiar en que, con el tiempo, su sabiduría será reconocida.</p>
+
+            <h3>Definición: Partida Triple</h3>
+            <p>Tres centros definidos conectados entre sí, lo que indica complejidad en su diseño y una mente analítica profunda.</p>
+            <p><strong>Implicación:</strong> Puede procesar información desde múltiples perspectivas, pero también puede sentirse abrumado por su propia intensidad.</p>
+        </div>
+
+        <div class="card">
+            <h2>Centros Definidos y Canales</h2>
+            <h3>Diseño (Cuerpo)</h3>
+            <p><strong>Centros definidos:</strong> Raíz, Bazo, Plexo Solar.</p>
+            <p><strong>Canales y Puertas clave:</strong></p>
+            <div class="gates-list">
+                <div class="gate-item"><span class="gate-number">40.6 (Soledad)</span> + <span class="gate-number">37.5 (Amistad)</span>: Canal de Comunidad. Busca conexiones significativas y apoyo mutuo.</div>
+                <div class="gate-item"><span class="gate-number">35.6 (Cambio)</span> + <span class="gate-number">36.5 (Crisis)</span>: Canal de Experiencia. Aprendizaje a través de altibajos emocionales.</div>
+                <div class="gate-item"><span class="gate-number">18.2 (Corrección)</span> + <span class="gate-number">58.4 (Alegría)</span>: Canal de Energía Vital. Capacidad para inspirar y motivar a otros.</div>
+            </div>
+
+            <h3>Personalidad (Consciente)</h3>
+            <p><strong>Puertas destacadas:</strong></p>
+            <div class="gates-list">
+                <div class="gate-item"><span class="gate-number">9.4 (Detalle)</span> + <span class="gate-number">16.4 (Habilidad)</span>: Perfeccionismo y talento para dominar técnicas.</div>
+                <div class="gate-item"><span class="gate-number">1.1 (Autoexpresión)</span>: Necesidad de compartir su creatividad de manera única.</div>
+                <div class="gate-item"><span class="gate-number">44.2 (Patrones)</span>: Habilidad para detectar patrones en el comportamiento humano.</div>
+            </div>
+
+            <h3>Autoridad (Decisiones)</h3>
+            <p><strong>Puertas en el Plexo Solar:</strong></p>
+            <div class="gates-list">
+                <div class="gate-item"><span class="gate-number">47.1 (Abatimiento)</span>: Miedo a no ser comprendido, pero superado con claridad emocional.</div>
+                <div class="gate-item"><span class="gate-number">64.3 (Confusión)</span>: Ideas brillantes que requieren tiempo para madurar.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Temas Clave y Recomendaciones</h2>
+            <h3>Fortalezas</h3>
+            <ul>
+                <li>Guía natural con capacidad para entender profundamente a los demás.</li>
+                <li>Resiliencia emocional y habilidad para transformar crisis en oportunidades.</li>
+            </ul>
+
+            <h3>Desafíos</h3>
+            <ul>
+                <li>Paciencia: Evitar la frustración si no es invitado o reconocido inmediatamente.</li>
+                <li>Autocuidado emocional: No absorber las emociones ajenas.</li>
+            </ul>
+
+            <h3>Acciones Recomendadas</h3>
+            <ul>
+                <li>Usar su red (Perfil 4) para compartir insights cuando sea solicitado.</li>
+                <li>Documentar sus aprendizajes (Puerta 9.4) para consolidar su rol de mentor (Fase 6).</li>
+            </ul>
+        </div>
+
+        <div class="quote">
+            "Tu éxito no está en perseguir, sino en ser encontrado. Cuando esperas, el mundo te invita a brillar."
+        </div>
+
+        <div class="footer">
+            <p>© 2023 - Todos los derechos reservados</p>
+        </div>
+    </div>
+</body>
+</html>

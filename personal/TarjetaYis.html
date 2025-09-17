@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/img/rose.gif" type="image/gif">
+    <title>Feliz Cumpleaños Mamá</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Kalam:wght@300;400;700&family=Courgette&family=Playfair+Display:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kalam', cursive;
+            background: radial-gradient(circle at 50% 50%, #0d0015, #02000a);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Fondo estrellado original mejorado */
+        #cielo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .estrella {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            opacity: 0;
+            animation: brillo 4s infinite ease-in-out;
+            animation-delay: calc(var(--delay) * 1s);
+            z-index: 0;
+        }
+
+        @keyframes brillo {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Estrellas fugaces mejoradas */
+        .estrella-fugaz {
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 1) 30%,
+                    rgba(244, 225, 210, 1) 70%,
+                    rgba(244, 225, 210, 0) 100%);
+            opacity: 0;
+            filter: drop-shadow(0 0 8px rgba(244, 225, 210, 0.9));
+            transform: rotate(45deg);
+            transform-origin: left center;
+            animation: fugaz 3s infinite;
+            z-index: 1;
+        }
+
+        @keyframes fugaz {
+            0% {
+                opacity: 0;
+                transform: rotate(45deg) translateX(0) scaleX(0);
+            }
+
+            20% {
+                opacity: 1;
+                transform: rotate(45deg) translateX(0) scaleX(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: rotate(45deg) translateX(300px) scaleX(0.3);
+            }
+        }
+
+        /* Contenedor principal vintage */
+        .card-outer {
+            position: relative;
+            z-index: 2;
+            background-color: #f8f1e6;
+            border: 15px solid transparent;
+            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23584b3d" stroke-width="3" stroke-dasharray="10,5"/></svg>') 30 round;
+            border-radius: 8px;
+            padding: 10px;
+            max-width: 1000px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: scale(0);
+            animation: card-appear 1s forwards 0.5s;
+        }
+
+        @keyframes card-appear {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        /* Contenedor interno para el contenido */
+        .card-inner {
+            background-color: #fff9f0;
+            border-radius: 4px;
+            padding: 30px;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
+
+        .vintage-border {
+            position: absolute;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            top: 10px;
+            left: 10px;
+            border: 1px dashed #584b3d;
+            pointer-events: none;
+            border-radius: 4px;
+            opacity: 0.6;
+        }
+
+        h1 {
+            font-family: 'Courgette', cursive;
+            color: #584b3d;
+            font-size: 2.3em;
+            margin: 0 0 20px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Rosa animada */
+        .rose-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 3;
+        }
+
+        @media (max-width: 500px) {
+            .rose-container {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        .rose-container:hover {
+            transform: scale(1.05);
+        }
+
+        .rose-gif {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.pinimg.com/originals/e8/c9/f7/e8c9f78a68f1956c3093a86da1a4f353.gif');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: all 1.5s ease;
+            transform-origin: center bottom;
+        }
+
+        .rose-container.closed .rose-gif {
+            transform: scale(0.9);
+        }
+
+        .rose-container.open .rose-gif {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+
+        .birthday-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            color: #c0392b;
+            opacity: 0;
+            transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s, opacity 1s ease 0.5s;
+            pointer-events: none;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            width: 100%;
+            text-align: center;
+            z-index: 4;
+            font-weight: bold;
+        }
+
+        @media (max-width: 500px) {
+            .birthday-text {
+                font-size: 2em;
+            }
+        }
+
+        .rose-container.open .birthday-text {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .instruction-text {
+            font-family: 'Kalam', cursive;
+            color: #584b3d;
+            font-style: italic;
+            margin: -10px 0 20px 0;
+            opacity: 1;
+            transition: opacity 0.5s;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .instruction-text.hidden {
+            opacity: 0;
+        }
+
+        /* Contenido de la historia */
+        .story-content {
+            font-family: 'Kalam', cursive;
+            text-align: left;
+            margin-top: 20px;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 1s, max-height 1s;
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #584b3d;
+            position: relative;
+            z-index: 2;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .story-content.visible {
+            opacity: 1;
+            max-height: none;
+            overflow: visible;
+        }
+
+        p {
+            color: #584b3d;
+            line-height: 1.6;
+            margin: 1em 0;
+        }
+
+        strong {
+            font-weight: bold;
+            color: #8b4513;
+        }
+
+        /* Corazones flotantes */
+        .hearts-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23c0392b" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+            background-size: contain;
+            opacity: 0;
+            animation: float 8s infinite ease-in-out;
+            filter: drop-shadow(0 0 4px rgba(192, 57, 43, 0.7));
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.5);
+                opacity: 0;
+                bottom: 0;
+            }
+
+            20% {
+                opacity: 0.9;
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+                bottom: 100vh;
+            }
+        }
+
+        /* Sección especial */
+        .secret-plan {
+            font-family: 'Kalam', cursive;
+            background-color: rgba(139, 69, 19, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #8b4513;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .secret-plan.visible {
+            display: block;
+            animation: fadeIn 1.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opaity: 1;
+            }
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: 30px;
+            color: #584b3d;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+            word-break: break-word;
+        }
+
+        @media (max-width: 480px) {
+            .signature {
+                font-size: 1.2em;
+                margin-top: 20px;
+                padding: 0 10px;
+            }
+        }
+
+
+        .poema {
+            font-family: 'Kalam', cursive;
+            margin-top: 1.5rem;
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #584b3d;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="cielo"></canvas>
+
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <div class="card-outer">
+        <div class="card-inner">
+            <div class="vintage-border"></div>
+
+            <h1>Para la mejor mamá del universo</h1>
+
+            <div class="rose-container closed" id="roseContainer">
+                <div class="rose-gif"></div>
+                <div class="birthday-text">¡Feliz Cumpleaños!</div>
+            </div>
+
+            <p class="instruction-text" id="instructionText">Toca la rosa con cuidado, mamá...</p>
+
+            <div class="story-content" id="storyContent">
+                <p>En un universo no muy lejano, donde los relojes son de arcilla y los planetas lienzos por pintar,
+                    vivía una artista capaz de dar forma a los sueños. Como el Principito cuidaba de su rosa, tú cuidas
+                    de la belleza que creas, dándole vida con tus manos.</p>
+
+                <p>En un planeta no más grande que una taza de té, donde los atardeceres se podían ver cuarenta y tres
+                    veces al día si movías tu silla lo suficiente, vivía una artista extraordinaria. Pintaba los sueños
+                    de las estrellas y modelaba con arcilla las canciones del viento.</p>
+
+                <p>Un día, mientras daba forma a una rosa particularmente rebelde (que insistía en ser azul en lugar de
+                    roja), apareció un conejo blanco con un reloj de arena en la mano. "¡Llegas tarde!", murmuró el
+                    conejo, aunque mamá no tenía idea de a qué se refería.</p>
+
+                <div class="secret-plan" id="secretPlan">
+                    <p><strong>Actividad Secreta:</strong> Hoy, después del cole (a las 2pm), tu pequeño príncipe tiene
+                        preparada una sorpresa. Prepárate para una aventura que comenzará con algo dulce (¿helado?
+                        ¿chocolate?) y quién sabe dónde terminará...</p>
+                    <p>Cuando la tarde Colombiana acaricie el cielo, él llegará con un carruaje de risas.</p>
+                </div>
+
+                <p>Siguiendo al conejo a través de un lienzo que había pintado esa mañana, mamá se encontró en un jardín
+                    donde los girasoles susurraban secretos y las nubes sabían bailar vals. Allí, un pequeño príncipe le
+                    extendió una caja con un regalo invisible. "Lo esencial es invisible a los ojos", dijo, "pero tu
+                    corazón de artista puede verlo".</p>
+
+                <p class="poema">"Tus manos de barro dan forma a universos,<br>
+                    tus ojos, espejos de auroras jamás contadas.<br>
+                    Que este día, mamá, sea tu lienzo más puro,<br>
+                    y en cada trazo, se pinte la dicha que mereces."</p>
+
+                <p>Al abrir la caja, encontró todos los momentos felices que había compartido con su pequeño príncipe de
+                    10 años, y la promesa de una aventura por venir...</p>
+
+                <div class="signature">
+                    <p>Con todo el cariño del mundo,</p>
+                    <p>Tu pequeño príncipe Adrián</p>
+                    <p>y el zorro estelar</p>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Configuración del cielo estrellado original
+            const canvas = document.getElementById('cielo');
+            const ctx = canvas.getContext('2d');
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                // Crear estrellas fijas con brillo intermitente
+                const starsContainer = document.createElement('div');
+                starsContainer.style.position = 'fixed';
+                starsContainer.style.top = '0';
+                starsContainer.style.left = '0';
+                starsContainer.style.width = '100%';
+                starsContainer.style.height = '100%';
+                starsContainer.style.pointerEvents = 'none';
+                starsContainer.style.zIndex = '0';
+                document.body.appendChild(starsContainer);
+
+                // Crear estrellas centelleantes (como en la versión original)
+                for (let i = 0; i < 200; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'estrella';
+                    star.style.left = Math.random() * 100 + 'vw';
+                    star.style.top = Math.random() * 100 + 'vh';
+                    star.style.setProperty('--delay', Math.random() * 4);
+                    starsContainer.appendChild(star);
+                }
+
+                // Crear estrellas fugaces mejoradas
+                function createShootingStar() {
+                    const shootingStar = document.createElement('div');
+                    shootingStar.className = 'estrella-fugaz';
+                    shootingStar.style.left = Math.random() * 100 + 'vw';
+                    shootingStar.style.top = Math.random() * 100 + 'vh';
+                    shootingStar.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    starsContainer.appendChild(shootingStar);
+
+                    setTimeout(() => {
+                        shootingStar.remove();
+                    }, 3000);
+
+                    // Programar la próxima estrella fugaz
+                    setTimeout(createShootingStar, Math.random() * 1000 + 500);
+                }
+
+                // Iniciar varios ciclos de estrellas fugaces
+                createShootingStar();
+                createShootingStar();
+                createShootingStar();
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            // Interacción con la rosa
+            const roseContainer = document.getElementById('roseContainer');
+            const instructionText = document.getElementById('instructionText');
+            const storyContent = document.getElementById('storyContent');
+            const secretPlan = document.getElementById('secretPlan');
+            const heartsContainer = document.getElementById('heartsContainer');
+
+            // Función para crear corazones flotantes
+            function createHearts() {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.width = (Math.random() * 30 + 10) + 'px';
+                heart.style.height = heart.style.width;
+                heart.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heartsContainer.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 10000);
+            }
+
+            // Crear algunos corazones al inicio
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createHearts();
+                }, i * 500);
+            }
+
+            roseContainer.addEventListener('click', function () {
+                if (!this.classList.contains('open')) {
+                    this.classList.remove('closed');
+                    this.classList.add('open');
+                    instructionText.classList.add('hidden');
+
+                    // Crear más corazones al abrir la rosa
+                    for (let i = 0; i < 20; i++) {
+                        setTimeout(() => {
+                            createHearts();
+                        }, i * 300);
+                    }
+
+                    setTimeout(() => {
+                        storyContent.classList.add('visible');
+
+                        setTimeout(() => {
+                            secretPlan.classList.add('visible');
+                        }, 1500);
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
