@@ -1,0 +1,33 @@
+# Nombre del flujo de trabajo que aparecerá en la pestaña "Actions" de GitHub
+name: Deploy to IONOS Hosting
+
+# ¿Cuándo se debe ejecutar esta acción?
+on:
+  # Se ejecutará cada vez que hagas un "push" a la rama "main"
+  push:
+    branches:
+      - main
+
+# ¿Qué trabajos se deben realizar?
+jobs:
+  ftp-deploy:
+    name: FTP Deploy
+    # Usaremos una máquina virtual con la última versión de Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Clona tu repositorio para tener acceso a los archivos
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      # 2. Sube los archivos a tu servidor FTP de IONOS
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          # El servidor FTP de IONOS (lo encuentras en tu panel de IONOS)
+          server: ${{ secrets.FTP_SERVER }}
+          # Tu nombre de usuario de FTP
+          username: ${{ secrets.FTP_USERNAME }}
+          # Tu contraseña de FTP
+          password: ${{ secrets.FTP_PASSWORD }}
+          # La carpeta en el servidor donde se subirán los archivos (normalmente la raíz o 'www')
+          server-dir: /

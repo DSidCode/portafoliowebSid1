@@ -38,3 +38,22 @@ Este documento resume las mejoras y acciones realizadas en el proyecto `danisid.
 - **Subida Exitosa**: Se cambió la URL del repositorio remoto a su versión SSH (`git@github.com:DSidCode/portafoliowebSid1.git`) y se subió con éxito todo el proyecto a GitHub.
 
 **Estado Actual**: El proyecto está ahora más seguro, mejor organizado y completamente versionado en GitHub.
+
+### 6. Automatización del Despliegue (CI/CD) con GitHub Actions
+
+- **Objetivo**: Eliminar la necesidad de usar FileZilla para las actualizaciones, automatizando el proceso de despliegue al hosting de IONOS.
+- **Implementación**:
+    - Se creó un archivo de flujo de trabajo en `.github/workflows/deploy.yml`.
+    - Se configuró la acción para activarse con cada `push` a la rama `main`.
+    - Se utilizó la acción `SamKirkland/FTP-Deploy-Action` para subir los archivos del repositorio al servidor FTP.
+- **Seguridad de Credenciales**:
+    - Se crearon "Repository Secrets" en GitHub (`FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`) para almacenar de forma segura las credenciales de IONOS, evitando exponerlas en el código.
+
+### 7. Expansión de Contenido y Proyectos
+
+- **Proyecto "Antología"**:
+    - Se añadió una nueva carpeta `antologia/` para albergar un proyecto web dedicado a la escritura poética del autor.
+    - Se creó un archivo `README.md` específico para documentar el proyecto "Del Amor Y Otras Nostalgias".
+    - Se integró el proyecto en la página principal (`index.html`) añadiendo una nueva tarjeta en la sección de "ULTIMOS PROYECTOS".
+
+**Estado Actual**: El proyecto no solo está organizado y versionado, sino que ahora cuenta con un **flujo de despliegue automático y profesional**. El contenido se ha expandido para reflejar la faceta de escritor del autor, haciendo el portafolio más completo.
