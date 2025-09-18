@@ -24,27 +24,27 @@
     <nav class="nav">
         <ul class="nav_list">
             <li>
-                <a href="#home" title="Inicio" class="nav_link">
+                <a href="#home" title="Inicio" class="nav_link" aria-label="Ir a Inicio">
                     <i class="ri-home-line"></i>
                 </a>
             </li>
             <li>
-                <a href="#projects" title="Proyectos" class="nav_link">
+                <a href="#projects" title="Proyectos" class="nav_link" aria-label="Ir a Proyectos">
                     <i class="ri-folder-line"></i>
                 </a>
             </li>
             <li>
-                <a href="#services" title="Servicios" class="nav_link">
+                <a href="#services" title="Servicios" class="nav_link" aria-label="Ir a Servicios">
                     <i class="ri-file-edit-line"></i>
                 </a>
             </li>
             <li>
-                <a href="#experience" title="Experiencia" class="nav_link">
+                <a href="#experience" title="Experiencia" class="nav_link" aria-label="Ir a Experiencia">
                     <i class="ri-honour-line"></i>
                 </a>
             </li>
             <li>
-                <a href="#contact" title="Contactos" class="nav_link">
+                <a href="#contact" title="Contactos" class="nav_link" aria-label="Ir a Contacto">
                     <i class="ri-send-plane-line"></i>
                 </a>
             </li>
@@ -163,7 +163,7 @@
                     <h3 class="projects_name">DSid - Portfolio Web</h3>
                     <p class="projects_description">DSid es un proyecto práctico de creación web que combina diseño visual y desarrollo frontend. Construido con HTML, CSS y JavaScript, incluye un efecto "Matrix" animado y un diseño responsive, reflejando habilidades en UX/UI y soluciones creativas para sitios modernos.</p>
                     <div class="projects_skills">
-                        <img src="assets/img/skills-html.svg" alt="icono html" class="projects_skill"><img src="assets/img/skills-css.svg" alt="icono css" class="projects_skill"><img src="assets/img/skills-javascript.svg" alt="icono javascript" class="projects_skill">
+                        <img src="assets/img/skills-html.svg" alt="Logo de HTML5" class="projects_skill"><img src="assets/img/skills-css.svg" alt="Logo de CSS3" class="projects_skill"><img src="assets/img/skills-javascript.svg" alt="Logo de JavaScript" class="projects_skill">
                     </div>
 
                     <a href="https://danisid.com" class="projects_button" target="_blank"
@@ -195,8 +195,8 @@
                     <h3 class="projects_name">Leyenda Del Dorado</h3>
                     <p class="projects_description">Colaboré con La Leyenda del Dorado, la prestigiosa carrera de ciclomontañismo por etapas en Colombia, diseñando carteles y material gráfico que aumentaron la participación digital en un 40%. Produje piezas informativas para redes sociales, destacando etapas de hasta 397 km y 9,000 m de ascenso, y apoyé en la edición de videos diarios para medios deportivos, capturando la emoción de un evento que reúne a 500 ciclistas de 34 países y genera un impacto económico de USD 2 millones por edición.</p>
                     <div class="projects_skills">
-                        <img src="assets/img/skills-photoshop.svg" alt="icono photoshop" class="projects_skill">
-                        <img src="assets/img/skills-Illustrator.svg" alt="icono illustrator" class="projects_skill">
+                        <img src="assets/img/skills-photoshop.svg" alt="Logo de Photoshop" class="projects_skill">
+                        <img src="assets/img/skills-Illustrator.svg" alt="Logo de Illustrator" class="projects_skill">
                     </div>
                     <a href="https://www.behance.net/gallery/136799743/Diseno-Grafico-La-Leyenda-del-Dorado-MTB" class="projects_button" target="_blank"
                     ><i class="ri-link"></i></a>
@@ -211,7 +211,7 @@
                         <h3 class="projects_name">Ilustración Digital</h3>
                         <p class="projects_description">Apasionado por las aves y su fascinante biología, he desarrollado una serie de ilustraciones digitales en Photoshop con un enfoque realista, destacando detalles como plumajes, texturas y características anatómicas propias de especies colombianas y exóticas. Mi interés por la ornitología se fusiona con mi habilidad en diseño gráfico, permitiéndome crear piezas que no solo capturan la esencia visual de estas criaturas, sino que también reflejan mi compromiso con la precisión científica y la expresión artística a través de la ilustración digital.</p>
                         <div class="projects_skills">
-                            <img src="assets/img/skills-photoshop.svg" alt="icono photoshop" class="projects_skill">
+                            <img src="assets/img/skills-photoshop.svg" alt="Logo de Photoshop" class="projects_skill">
                         
                         </div>
                         <a href="https://www.behance.net/gallery/136112111/Ilustracion-Digital" class="projects_button" target="_blank">
@@ -360,10 +360,17 @@
             <div class="contact_container container grid">
                 <form action="" class="contact-form grid" id="contact-form">
                     <div class="contact_group grid">
-                        <input type="text"name="user_name" placeholder="Nombre" required class="contact_input">
-                        <input type="text"name="user_email"placeholder="Email" required class="contact_input">
+                        <div>
+                            <label for="user_name" class="visually-hidden">Nombre</label>
+                            <input type="text" id="user_name" name="user_name" placeholder="Nombre" required class="contact_input">
+                        </div>
+                        <div>
+                            <label for="user_email" class="visually-hidden">Email</label>
+                            <input type="email" id="user_email" name="user_email" placeholder="Email" required class="contact_input">
+                        </div>
                     </div>
-                    <textarea name="user_message" placeholder="Mensaje" class="contact_input contact_area"></textarea>
+                    <label for="user_message" class="visually-hidden">Mensaje</label>
+                    <textarea id="user_message" name="user_message" placeholder="Mensaje" required class="contact_input contact_area"></textarea>
                     <button type="submit" class="button contact_button">Enviar Mensaje</button>
                     <p class="contact_message" id="contact-message">
                     </p>
@@ -403,7 +410,7 @@
         </span>
     </footer>
     <!-- SCROLL UP -->
-     <a href="#" class="scrollup" id="scroll-up">
+     <a href="#" class="scrollup" id="scroll-up" aria-label="Volver arriba">
         <i class="ri-arrow-up-line"></i>
     </a>
     <!-- scrollreveal -->
