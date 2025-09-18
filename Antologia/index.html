@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Del Amor Y Otras Nostalgias</title>
+    <!-- Se mantiene el enlace a Font Awesome, ya que es el framework que usaremos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --brand-x: #000000;
+            --brand-fb: #1877F2;
+            --brand-ig: #E1306C;
+            --brand-paypal: #003087;
+            --brand-bizum: #00B9B3;
+            --brand-nequi: #5A2D82;
+            --ink: #222;
+            --paper: #fdfcf9;
+            --line: #e0e0e0;
+            --shadow: 0 6px 18px rgba(0,0,0,.06);
+            --font-serif: "Georgia", serif;
+            --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            --nav-bg: #fafafa;
+            --header-border: #ddd;
+            --transition: all 0.3s ease;
+        }
+
+        /* Base */
+        * { 
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
+        
+        html, body { 
+            height: 100%; 
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-serif);
+            background-color: var(--paper);
+            color: var(--ink);
+            line-height: 1.65;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Layout Utilities */
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .grid-center {
+            display: grid;
+            place-items: center;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--header-border);
+            background: var(--nav-bg);
+            backdrop-filter: blur(5px);
+        }
+        
+        header h1 {
+            margin: 0.2rem 0 0.3rem;
+            font-size: clamp(1.5rem, 4vw, 1.9rem);
+            font-weight: 500;
+        }
+        
+        header p {
+            margin: 0 0 0.5rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+        .italic-font
+        {
+            font-style: italic;
+            font-weight: 300;
+            color: #444;
+        }
+        
+        .main-nav {
+            margin-top: 0.8rem;
+        }
+        
+        .pill {
+            font-family: var(--font-sans);
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #555;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.92rem;
+            transition: var(--transition);
+            background: #fff;
+        }
+        
+        .pill:hover,
+        .pill:focus {
+            background: #222;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Main Book Container */
+        .book {
+            max-width: 820px;
+            width: 100%;
+            margin: 0 auto;
+            flex: 1;
+            display: flex;
+            align-items: stretch;
+            padding: 1rem;
+            position: relative;
+        }
+        
+        .page {
+            display: none;
+            width: 100%;
+            padding: 2rem;
+            background: #fff;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .page.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page h2 {
+            font-size: clamp(1.5rem, 5vw, 1.8rem);
+            margin: 0 0 1.25rem;
+            text-align: center;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .page h2 small {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #666;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        .page p {
+            font-size: 1.08rem;
+            text-align: justify;
+            margin: 0 0 1rem;
+            hyphens: auto;
+        }
+
+        /* Poem specific styles */
+        .poem-columns {
+            columns: 2;
+            column-gap: 2.5rem;
+            text-align: left;
+        }
+
+        .poem-columns p {
+            break-inside: avoid-column;
+            margin-bottom: 1.2em !important; /* Ensure stanza spacing */
+        }
+
+        /* Pager */
+        .pager {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.75rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--line);
+        }
+        
+        .nav-link {
+            font-family: var(--font-sans);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: #222;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover,
+        .nav-link:focus {
+            background: #f5f5f5;
+            text-decoration: underline;
+        }
+        
+        .page-counter {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Índice */
+        .indice-container {
+            display: none;
+            width: 100%;
+            padding: 2rem;
+            background: #fff;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            flex-direction: column; /* Nuevo: para organizar mejor el contenido */
+            justify-content: space-between; /* Nuevo: para separar el intro y el índice */
+        }
+        
+        .indice-container.active {
+            display: flex; /* Cambiado a flex para la organización de los elementos internos */
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .indice-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .indice-list {
+            list-style: none;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        
+        .indice-list li {
+            margin-bottom: 1rem; /* Aumentado el espacio entre los elementos de la lista */
+            break-inside: avoid;
+        }
+        
+        .indice-link {
+            color: var(--ink);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            padding: 0.5rem 0.75rem; /* Aumentado el área clicable y el espacio */
+            border-radius: 4px;
+            background: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0,0,0,.04);
+            font-family: var(--font-sans);
+            font-weight: 500;
+        }
+        
+        .indice-link:hover,
+        .indice-link:focus {
+            color: var(--brand-ig);
+            text-decoration: underline;
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,.08);
+        }
+
+        /* Social/Donation Buttons */
+        .actions {
+            margin: 1.25rem auto;
+            padding: 0 1rem;
+            display: flex;
+            flex-direction: column; /* Cambiado a columna para apilar las secciones */
+            align-items: center; /* Centrar las secciones */
+            gap: 1.5rem; /* Espacio entre las secciones */
+            max-width: 500px;
+        }
+
+        .action-group {
+            width: 100%;
+            text-align: center;
+        }
+
+        .action-group h3 {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #555;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        
+        .icon-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: transparent;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .icon-btn:hover,
+        .icon-btn:focus {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Cambiado de svg a i para los iconos de Font Awesome */
+        .icon-btn i {
+            font-size: 24px; /* Se usa font-size para controlar el tamaño de los iconos */
+            transition: var(--transition);
+        }
+        
+        .icon-btn:hover i {
+            transform: scale(1.1);
+        }
+        
+        /* Colores específicos para cada botón */
+        .icon-btn.x-icon { 
+            color: var(--brand-x);
+            border-color: var(--brand-x);
+        }
+        .icon-btn.x-icon:hover { 
+            background-color: var(--brand-x);
+            color: white;
+        }
+        
+        .icon-btn.fb-icon { 
+            color: var(--brand-fb);
+            border-color: var(--brand-fb);
+        }
+        .icon-btn.fb-icon:hover { 
+            background-color: var(--brand-fb);
+            color: white;
+        }
+        
+        .icon-btn.ig-icon { 
+            color: var(--brand-ig);
+            border-color: var(--brand-ig);
+        }
+        .icon-btn.ig-icon:hover { 
+            background-color: var(--brand-ig);
+            color: white;
+        }
+        
+        .icon-btn.paypal-icon { 
+            color: var(--brand-paypal);
+            border-color: var(--brand-paypal);
+        }
+        .icon-btn.paypal-icon:hover { 
+            background-color: var(--brand-paypal);
+            color: white;
+        }
+        
+        .icon-btn.bizum-icon { 
+            color: var(--brand-bizum);
+            border-color: var(--brand-bizum);
+        }
+        .icon-btn.bizum-icon:hover { 
+            background-color: var(--brand-bizum);
+            color: white;
+        }
+        
+        .icon-btn.nequi-icon { 
+            color: var(--brand-nequi);
+            border-color: var(--brand-nequi);
+        }
+        .icon-btn.nequi-icon:hover { 
+            background-color: var(--brand-nequi);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            padding: 1.5rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.92rem;
+            margin-top: auto;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .book {
+                padding: 0.5rem;
+            }
+            
+            .page {
+                padding: 1.5rem;
+            }
+            
+            .indice-list {
+                columns: 1;
+            }
+            
+            .poem-columns {
+                columns: 1;
+            }
+
+            .pager {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .nav-link {
+                padding: 0.75rem 1.5rem;
+                background: #f9f9f9;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .actions {
+                gap: 1rem;
+            }
+            
+            .icon-btn {
+                width: 44px;
+                height: 44px;
+            }
+            
+            .icon-btn i {
+                font-size: 20px; /* Se usa font-size para controlar el tamaño de los iconos */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.75rem;
+            }
+            
+            .pill {
+                padding: 0.35rem 0.7rem;
+                font-size: 0.85rem;
+            }
+            
+            .page {
+                padding: 1.25rem;
+            }
+            
+            .page p {
+                font-size: 1rem;
+                text-align: left;
+            }
+            
+            .icon-btn {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .icon-btn i {
+                font-size: 18px; /* Se usa font-size para controlar el tamaño de los iconos */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="italic-font">Antología</h1>
+        <h1>Del Amor Y Otras Nostalgias</h1>
+        <p>Escribo para no perderme en los laberintos de mi propia mente.</p>
+        <nav class="main-nav flex-center">
+            <a class="pill" href="#indice" id="btn-inicio">Índice</a>
+            <a class="pill" href="#bio">Autobiografía</a>
+            <a class="pill" href="#apoyo">Apóyame</a>
+            <a class="pill" href="mailto:danisid@email.com">Escríbeme</a>
+        </nav>
+    </header>
+
+    <main class="book">
+        <!-- Índice -->
+        <section class="indice-container active" id="indice">
+            <div class="indice-intro">
+                <h2>Índice</h2>
+                <p>
+                    Aquí comienza el susurro de los versos que habitan en estas páginas. 
+                    <br>
+                    Clic en el título para empezar a leer.
+                </p>
+            </div>
+            
+            <ul class="indice-list">
+                <li><a href="#intro" class="indice-link" data-target="1">Introducción</a></li>
+                <li><a href="#poema-1" class="indice-link" data-target="2">Conejo Blanco</a></li>
+                <li><a href="#poema-2" class="indice-link" data-target="3">Sed de ti</a></li>
+                <li><a href="#poema-3" class="indice-link" data-target="4">Aquí me tienes</a></li>
+                <li><a href="#poema-4" class="indice-link" data-target="5">Los Diminutos (Versión poética)</a></li>
+                <li><a href="#poema-5" class="indice-link" data-target="6">Los Diminutos (Versión fantasía)</a></li>
+                <!-- Agrega más poemas aquí -->
+            </ul>
+        </section>
+
+        <!-- Páginas de poemas -->
+          <section class="page" id="intro" data-title="Introduccion" data-index="1">
+            <div>
+                <h2></h2>
+                <p>
+                    Si escribo lo que siento es porque así disminuyo la fiebre de sentir. <br>
+                    Lo que confieso no tiene importancia, pues nada tiene importancia. <br>
+                    Hago paisajes con lo que siento.<br>
+                    Hago fiestas de las sensaciones.<br>
+                    <br><br>
+                    (libro del desasosiego- Fernando Pessoa)
+                </p>
+            </div>
+            <div class="pager">
+                <a href="#indice" class="nav-link prev" data-prev="0"><span aria-hidden="true">←</span> Volver al índice</a>
+                <span class="page-counter">Página 1 de 6</span>
+                <a href="#poema-1" class="nav-link next" data-next="2">Siguiente <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+        <section class="page" id="poema-1" data-title="Conejo Blanco" data-index="2">
+            <div>
+                <h2>Conejo Blanco</h2>
+                <p>
+                    Llegas tarde como de costumbre -me dijo-…
+                    <br><br>
+                    La noche anterior había llamado pero no fue muy prudente hablar en ese momento, <br>
+                    esta mañana el teléfono sonó para despertarme, <br>
+                    habíamos tenido pesadillas en lo que va corrido de las últimas noches <br>
+                    y esta era una de las razones para llegar a su habitación <br>
+                    y contemplar el conejo blanco que por fin había enjaulado, <br>
+                    cosa que me aterro profundamente, <br>
+                    y que para ella se convertía en una sonrisa pícara dibujada en su rostro.
+                    <br><br>
+                    Yo preferí omitir el descaro para recostarme con la mirada perdida en el techo, <br>
+                    hasta que sus ojos inquietantes por fin me cuestionaron acerca de mis pensamientos. <br>
+                    Esto siempre me detenía en un rápido análisis sobre lo que ella debería saber <br>
+                    y lo que yo debería omitir y olvidar para mi salud mental…
+                    <br><br>
+                    Deshice pequeñas cadenas y ataduras en mi lengua, <br>
+                    contraje el espacio entre nuestras miradas mientras sentía el temblor en todo mi cuerpo <br>
+                    y sentí de nuevo su caricia angelical, <br>
+                    aquellas que tantas veces he buscado en otras manos tan torpes y de buenas intenciones <br>
+                    que a duras penas si llego a entender que es una caricia.
+                    <br><br>
+                    Ella no, ella lo hace con el alma y sabe llegar hasta la mía y como diría Oliverio Gironda, <br>
+                    después de conocer una mujer etérea, <br>
+                    ¿puede brindarnos alguna clase de atractivos una mujer terrestre?
+                </p>
+            </div>
+            <div class="pager">
+                <a href="#intro" class="nav-link prev" data-prev="1"><span aria-hidden="true">←</span> Anterior</a>
+                <span class="page-counter">Página 2 de 6</span>
+                <a href="#poema-2" class="nav-link next" data-next="3">Siguiente <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+
+        <section class="page" id="poema-2" data-title="Sed de ti" data-index="3">
+            <div>
+                <h2>Sed de ti</h2>
+                <p>
+                    Porque tengo sed de ti y de tu cuerpo cálido, <br>
+                    tengo sed de tus labios y tus senos, <br>
+                    tengo sed de tu mirada y tu respiración, <br>
+                    de esas noches que no han llegado y que no sé si llegarán.
+                    <br><br>
+                    Tengo sed de nuestros silencios abrazados, <br>
+                    de nuestras caricias interminables y de esos besos profundos por todo el cuerpo, <br>
+                    de esas tardes mirando puestas de sol, <br>
+                    de esos días de lluvia caminando tomados de la mano, <br>
+                    de esos momentos sin hacer nada o simplemente comiendo helado, <br>
+                    viendo una película y en algunas ocasiones no verla.
+                    <br><br>
+                    Tengo sed de reírnos por bobadas y de nuestros juegos tontos que solo nosotros entendemos, <br>
+                    tengo sed de todos esos momentos, <br>
+                    tengo sed de tus tristezas, de tus alegrías, de tus alas, de tu calor, <br>
+                    tengo sed de tu cuerpo ansioso, <br>
+                    tengo sed de ti… Mujer de mi media noche.
+                </p>
+            </div>
+            <div class="pager">
+                <a href="#poema-1" class="nav-link prev" data-prev="2"><span aria-hidden="true">←</span> Anterior</a>
+                <span class="page-counter">Página 3 de 6</span>
+                <a href="#poema-3" class="nav-link next" data-next="4">Siguiente <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+
+        <section class="page" id="poema-3" data-title="Aquí me tienes" data-index="4">
+            <div>
+                <h2>Aquí me tienes</h2>
+                <div class="poem-columns">
+                    <p>
+                        Aquí me tienes,<br>
+                        buscando palabras para ti,<br>
+                        letras profanas que persigo incansablemente<br>
+                        en el rincón de mi memoria,<br>
+                        en libros leídos<br>
+                        y sentimientos perdidos.
+                    </p>
+                    <p>
+                        Un mundo quisiera crear,<br>
+                        uno solo para los dos<br>
+                        y para nadie más.
+                    </p>
+                    <p>
+                        Trato de entender lo que pienso<br>
+                        y lo que siento,<br>
+                        pero no hallo respuesta.
+                    </p>
+                    <p>
+                        Me canso de ser lo que soy,<br>
+                        quiero dar,<br>
+                        y no recibo nada.
+                    </p>
+                    <p>
+                        Me canso de mí mismo,<br>
+                        de esta sed que no calma<br>
+                        ninguna bebida.
+                    </p>
+                    <p>
+                        Quisiera beber la miel de tus labios,<br>
+                        el néctar dulce de tu piel.
+                    </p>
+                    <p>
+                        Pero no…<br>
+                        aquí me encuentro otra vez,<br>
+                        en medio de la noche,<br>
+                        queriendo estar contigo,<br>
+                        y aún sigo solo.
+                    </p>
+                    <p>
+                        Porque el quererte y desearte tanto<br>
+                        es insuficiente.<br>
+                        No basta con pasarme la vida<br>
+                        pensando en ti,
+                    </p>
+                    <p>
+                        no es suficiente mi tristeza,<br>
+                        mi melancolía de no tenerte,<br>
+                        ni es suficiente desgarrar mi alma<br>
+                        y plasmarla en papel.
+                    </p>
+                    <p>
+                        Este sentimiento indescifrable,<br>
+                        imposible de escribir,<br>
+                        cuyas palabras aún no existen,<br>
+                        pertenece a lo más recóndito del corazón,<br>
+                        a lo inalcanzable.
+                    </p>
+                    <p>
+                        A veces siento miedo<br>
+                        de esto que soy,<br>
+                        miedo de mí mismo,<br>
+                        de que tal vez pertenezca<br>
+                        a otro lugar,<br>
+                        a una vida que no fue la mía.
+                    </p>
+                    <p>
+                        Y de qué me sirve escribirte<br>
+                        si no consigo tu corazón,<br>
+                        si no extingo estos sentimientos<br>
+                        indescifrables,<br>
+                        intensos<br>
+                        y, al parecer…
+                    </p>
+                    <p>
+                        eternos.
+                    </p>
+                </div>
+            </div>
+            <div class="pager">
+                <a href="#poema-2" class="nav-link prev" data-prev="3"><span aria-hidden="true">←</span> Anterior</a>
+                <span class="page-counter">Página 4 de 6</span>
+                <a href="#poema-4" class="nav-link next" data-next="5">Siguiente <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+
+        <section class="page" id="poema-4" data-title="Los Diminutos (Versión poética)" data-index="5">
+            <div>
+                <h2>Los Diminutos<br><small>Versión poética</small></h2>
+                <p>
+                    En las esquinas de la casa<br>
+                    viven seres diminutos,<br>
+                    nacidos en nidos olvidados de arañas,<br>
+                    donde flotan hilos oscuros por el polvo,<br>
+                    como sueños nebulosos.
+                </p>
+                <p>
+                    Son apenas un soplo,<br>
+                    un centímetro de ingenio,<br>
+                    ladrones de migas de pan<br>
+                    y de granos de azúcar.
+                </p>
+                <p>
+                    Han visto tormentas de amor<br>
+                    hundiendo barcos de papel,<br>
+                    con timones de chinchetas<br>
+                    y remos de fósforos apagados.
+                </p>
+                <p>
+                    Me han visto llorar,<br>
+                    te han visto llorar,<br>
+                    y han escuchado el silencio<br>
+                    cuando pesaba más que la palabra.
+                </p>
+                <p>
+                    Ellos saben de mí<br>
+                    más que yo mismo,<br>
+                    me observan como te observaban a ti,<br>
+                    y aún así se sorprenden<br>
+                    de cuánto he vuelto a sonreír,<br>
+                    de cuánto los amo,<br>
+                    y de cuánto agradezco<br>
+                    que existan aquí,<br>
+                    en nuestra habitación,<br>
+                    recordándome el amor que ya no está.
+                </p>
+            </div>
+            <div class="pager">
+                <a href="#poema-3" class="nav-link prev" data-prev="4"><span aria-hidden="true">←</span> Anterior</a>
+                <span class="page-counter">Página 5 de 6</span>
+                <a href="#poema-5" class="nav-link next" data-next="6">Siguiente <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+
+        <section class="page" id="poema-5" data-title="Los Diminutos (Versión fantasía)" data-index="6">
+            <div>
+                <h2>Los Diminutos<br><small>Versión fantasía</small></h2>
+                <p>
+                    En mi casa habitan unos seres muy pequeños,<br>
+                    tan pequeños que no miden más de un centímetro.<br>
+                    Los descubrí una noche en los nidos abandonados de arañas,<br>
+                    esos rincones donde flotan hilos,<br>
+                    algunos aún algodonosos y tibios,<br>
+                    otros ya oscuros y polvorientos,<br>
+                    como la nostalgia de lo que fue hogar.
+                </p>
+                <p>
+                    Son seres ingeniosos:<br>
+                    construyen barcos de papel para navegar<br>
+                    las tormentas de amor y de tristeza que cruzan por la habitación.<br>
+                    Colocan una chincheta como timón,<br>
+                    y utilizan fósforos sin encender como remos.
+                </p>
+                <p>
+                    Desde su escondite observan todo.<br>
+                    Me han visto llorar,<br>
+                    te han visto llorar,<br>
+                    y han escuchado el silencio más hondo<br>
+                    cuando la casa parecía naufragar.
+                </p>
+                <p>
+                    Conocen mis secretos,<br>
+                    mi intimidad más que yo mismo.<br>
+                    Han sido testigos de ese amor que compartimos,<br>
+                    de ese hogar y de esa mujer<br>
+                    que ya no habita en mi vida.
+                </p>
+                <p>
+                    Pero también se han sorprendido<br>
+                    de lo mucho que he vuelto a sonreír.<br>
+                    Y aunque nunca han hablado,<br>
+                    sé que me acompañan.<br>
+                    Y yo los amo,<br>
+                    porque habitan en nuestra antigua habitación<br>
+                    y en la memoria viva de lo que fuimos.
+                </p>
+            </div>
+            <div class="pager">
+                <a href="#poema-4" class="nav-link prev" data-prev="5"><span aria-hidden="true">←</span> Anterior</a>
+                <span class="page-counter">Página 6 de 6</span>
+            </div>
+        </section>
+
+        <!-- Sección de autobiografía (placeholder) -->
+        <section class="page" id="bio" data-title="Autobiografía" data-index="7">
+            <div>
+                <h2>Autobiografía</h2>
+                <p>Aquí aparecerá la autobiografía del autor.</p>
+            </div>
+            <div class="pager">
+                <a href="#indice" class="nav-link prev" data-prev="0"><span aria-hidden="true">←</span> Volver al índice</a>
+            </div>
+        </section>
+        
+        <!-- Nueva sección de apoyo -->
+        <section class="page" id="apoyo" data-title="Apoya al autor" data-index="8">
+            <div>
+                <h2>Apoya al autor</h2>
+                <p>
+                    Si te gusta el contenido que creo, puedes mostrar tu apoyo a través de una pequeña contribución económica. <br>
+                    Tu ayuda me permite seguir escribiendo, explorando nuevas ideas y compartiendo mi arte contigo.
+                </p>
+                <p>
+                    También puedes seguirme en redes sociales para estar al tanto de mis últimos poemas, reflexiones y novedades.
+                </p>
+            </div>
+            <div class="pager">
+                <a href="#indice" class="nav-link prev" data-prev="0"><span aria-hidden="true">←</span> Volver al inicio</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bloque de acciones con iconos de Font Awesome -->
+    <div class="actions">
+        <div class="action-group">
+            <h3>Compartir</h3>
+            <div class="action-buttons">
+                <a class="icon-btn x-icon" title="Compartir en X" target="_blank" id="share-x" aria-label="Compartir en X">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a class="icon-btn fb-icon" title="Compartir en Facebook" target="_blank" id="share-fb" aria-label="Compartir en Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="icon-btn ig-icon" title="Ver en Instagram" target="_blank" href="#" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+        <div class="action-group">
+            <h3>Donar</h3>
+            <div class="action-buttons">
+                <a class="icon-btn paypal-icon" title="Donar con PayPal" target="_blank" href="#" aria-label="Donar con PayPal">
+                    <i class="fab fa-paypal"></i>
+                </a>
+                <a class="icon-btn bizum-icon" title="Donar con Bizum" href="#" aria-label="Donar con Bizum">
+                    <i class="fa-solid fa-square-phone"></i>
+                </a>
+                <a class="icon-btn nequi-icon" title="Donar con Nequi" href="#" aria-label="Donar con Nequi">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 DaniSid Garcia Alzate · Compartir libremente
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pages = Array.from(document.querySelectorAll('.page, .indice-container'));
+            const shareX = document.getElementById('share-x');
+            const shareFb = document.getElementById('share-fb');
+            const btnInicio = document.getElementById('btn-inicio');
+            
+            // Pre-calcula las páginas del libro y su total para mayor eficiencia.
+            const bookContentPages = pages.filter(p => p.classList.contains('page') && !['bio', 'apoyo'].includes(p.id));
+            const totalBookPages = bookContentPages.length;
+            // Almacena el índice de la página en el propio elemento para evitar búsquedas posteriores.
+            bookContentPages.forEach((page, index) => {
+                page.dataset.bookPageIndex = index;
+            });
+
+            let currentPageIndex = 0;
+            
+            function preloadNextPage() {
+                const nextIndex = (currentPageIndex + 1) % pages.length;
+                if (nextIndex >= 0 && nextIndex < pages.length) {
+                    setTimeout(() => {
+                        console.log('Página precargada:', pages[nextIndex].dataset.title);
+                    }, 500);
+                }
+            }
+
+            function showPage(index) {
+                if (index < 0) index = 0;
+                if (index >= pages.length) index = pages.length - 1;
+                
+                currentPageIndex = index;
+                pages.forEach(p => p.classList.remove('active'));
+                pages[currentPageIndex].classList.add('active');
+                
+                const currentId = pages[currentPageIndex].id;
+                history.replaceState(null, '', `#${currentId}`);
+                updateShareLinks();
+                updatePageCounter();
+                preloadNextPage();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            function showIndice() {
+                showPage(0); // El índice es ahora la primera página (index 0)
+            }
+            
+            function updatePageCounter() {
+                // Busca el contador solo dentro de la página activa actualmente.
+                const activePage = pages[currentPageIndex];
+                const counter = activePage.querySelector('.page-counter');
+                
+                if (counter) {
+                    // Accede directamente al índice pre-calculado desde el dataset del elemento.
+                    const bookPageIndex = activePage.dataset.bookPageIndex;
+                    if (bookPageIndex !== undefined) {
+                        counter.textContent = `Página ${parseInt(bookPageIndex) + 1} de ${totalBookPages}`;
+                    }
+                }
+            }
+
+            function updateShareLinks() {
+                const activePage = document.querySelector('.page.active');
+                if (!activePage) return;
+                
+                const title = activePage.dataset.title || document.title;
+                const url = window.location.href.split('#')[0] + '#' + activePage.id;
+                
+                if (shareX) {
+                    shareX.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+                }
+                if (shareFb) {
+                    shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                }
+            }
+
+            function setupNavigation() {
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetIndex = e.target.closest('.nav-link').dataset.next;
+                        if (targetIndex) {
+                            showPage(parseInt(targetIndex));
+                        } else {
+                            const prevIndex = e.target.closest('.nav-link').dataset.prev;
+                            showPage(parseInt(prevIndex));
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.indice-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetIndex = parseInt(link.dataset.target);
+                        showPage(targetIndex);
+                    });
+                });
+                
+                document.querySelectorAll('.pill').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href').substring(1);
+                        const targetPage = pages.find(p => p.id === targetId);
+                        if (targetPage) {
+                            showPage(pages.indexOf(targetPage));
+                        }
+                    });
+                });
+                
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        showPage(currentPageIndex - 1);
+                    } else if (e.key === 'ArrowRight') {
+                        showPage(currentPageIndex + 1);
+                    } else if (e.key === 'Home') {
+                        showPage(0);
+                    } else if (e.key === 'End') {
+                        showPage(pages.length - 1);
+                    } else if (e.key === 'Escape') {
+                        showPage(0);
+                    }
+                });
+            }
+
+            // Inicializar
+            const initialHash = window.location.hash;
+            let initialIndex = 0;
+            
+            if (initialHash) {
+                const targetPage = pages.find(p => `#${p.id}` === initialHash);
+                if (targetPage) {
+                    initialIndex = pages.indexOf(targetPage);
+                }
+            }
+            showPage(initialIndex);
+            
+            setupNavigation();
+            
+            document.querySelectorAll('a').forEach(link => {
+                link.setAttribute('tabindex', '0');
+            });
+        });
+    </script>
+</body>
+</html>
