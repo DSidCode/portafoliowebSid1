@@ -57,3 +57,28 @@ Este documento resume las mejoras y acciones realizadas en el proyecto `danisid.
     - Se integró el proyecto en la página principal (`index.html`) añadiendo una nueva tarjeta en la sección de "ULTIMOS PROYECTOS".
 
 **Estado Actual**: El proyecto no solo está organizado y versionado, sino que ahora cuenta con un **flujo de despliegue automático y profesional**. El contenido se ha expandido para reflejar la faceta de escritor del autor, haciendo el portafolio más completo.
+
+---
+
+## 8. Fase 2: Profesionalización y Escalabilidad
+
+Se inicia una nueva fase enfocada en refinar la marca personal, mejorar la experiencia de usuario y preparar el proyecto para futuras expansiones.
+
+- **Planificación Estratégica**:
+    - Se creó el documento `PLAN_DE_TRABAJO_FASE_2.md` para guiar las siguientes etapas del desarrollo.
+    - Se definió una nueva filosofía de proyecto ("El Alma Digital") para unificar el diseño y la narrativa del sitio.
+
+- **Corrección y Verificación de CI/CD**:
+    - Se diagnosticó que el workflow de GitHub Actions no se estaba ejecutando.
+    - **Solución**: Se corrigió el nombre de la carpeta de `.github/workflws` a `.github/workflows`.
+    - **Resultado**: Se realizó un `push` de prueba que activó con éxito el despliegue automático, confirmando que el pipeline de CI/CD es 100% funcional.
+
+- **Mejoras de UI/UX en la Página Principal (`index.html`)**:
+    - **Claridad en CTA**: Se modificó el texto del botón "Descargar CV" a "Ver CV" para una llamada a la acción más precisa.
+    - **Expansión del Portafolio**: Se añadió una nueva tarjeta de proyecto para "Aventuras de Adrián", destacando su valor pedagógico y técnico.
+    - **Refactorización de la Barra de Habilidades**:
+        - Se reemplazaron las imágenes SVG por iconos de la librería **Remix Icon** para mayor consistencia y escalabilidad.
+        - Se creó una barra de habilidades principal enfocada en las tecnologías clave actuales (HTML, CSS, JS, Linux, CLI, AI, VS Code).
+        - Se implementó una barra secundaria oculta con un botón "Ver más" (`+`) para mostrar el resto de las habilidades (React, Figma, etc.), manteniendo la interfaz limpia y organizada.
+
+**Estado Actual**: El proyecto ha entrado en una fase de refinamiento profesional. El despliegue automático está verificado y se han implementado mejoras significativas en la interfaz de usuario para reflejar mejor el enfoque tecnológico y la amplitud de habilidades del autor.

@@ -13,10 +13,11 @@ El objetivo es refinar la página de inicio para que refleje claramente la nueva
 *   **Acciones:**
     *   **Mantener:** HTML, CSS, JavaScript como base fundamental.
     *   **Añadir:**
-        *   Icono de Linux.
+        *   Icono de Tux (el pingüino de Linux).
+        *   Icono de Kali Linux.
         *   Icono de la Terminal/CLI.
-        *   Icono genérico de Inteligencia Artificial o específico de Gemini.
-        *   Icono de Visual Studio Code.
+        *   Logo de Gemini (usando el nuevo archivo `gemini.svg`).
+        *   Logo de Visual Studio Code (usando el nuevo archivo `vscode.svg`).
     *   **Implementar un botón "Ver más":** Añadir un icono (ej. `+` o `...`) que al hacer clic despliegue una vista con el resto de las habilidades (Figma, WordPress, Photoshop, etc.) para mantener la barra principal limpia y enfocada.
     *   **Revisar:** El resto de los iconos para asegurar que la barra principal sea concisa y potente.
 
@@ -39,6 +40,12 @@ El objetivo es refinar la página de inicio para que refleje claramente la nueva
 *   **Objetivo:** Simplificar y clarificar las llamadas a la acción principales.
 *   **Acciones:**
     *   Modificar el texto del botón "Descargar CV" a simplemente "CV" o una palabra similar que indique la visualización del currículum.
+
+### 1.5. Ampliar Laboratorio Creativo
+*   **Objetivo:** Reflejar los intereses y áreas de estudio actuales, como la ciberseguridad.
+*   **Acciones:**
+    *   Añadir una nueva tarjeta en la sección "LABORATORIO CREATIVO" dedicada a la **Ciberseguridad**.
+    *   La descripción debe mencionar el uso de Kali Linux como sistema operativo principal y el interés en explorar este campo, conectándolo con los estudios en 42 Madrid.
 
 ---
 

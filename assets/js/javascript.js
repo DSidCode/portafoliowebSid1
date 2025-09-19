@@ -134,3 +134,26 @@ window.addEventListener('resize', () => {
         const drops = Array(newColumns).fill(1);
     });
 });
+
+/*=============== SKILLS TOGGLE ===============*/
+const skillsToggle = document.getElementById('skills-toggle'),
+      skillsSecondary = document.getElementById('skills-secondary')
+
+if (skillsToggle) {
+    skillsToggle.addEventListener('click', () => {
+        // Add the show-skills class to the div tag with the skills_secondary class
+        skillsSecondary.classList.toggle('show-skills')
+
+        // Change icon
+        const icon = skillsToggle.querySelector('i');
+        if (icon.classList.contains('ri-add-line')) {
+            icon.classList.remove('ri-add-line');
+            icon.classList.add('ri-subtract-line');
+            skillsToggle.title = "Ver menos habilidades";
+        } else {
+            icon.classList.remove('ri-subtract-line');
+            icon.classList.add('ri-add-line');
+            skillsToggle.title = "Ver más habilidades";
+        }
+    })
+}
