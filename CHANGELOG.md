@@ -84,3 +84,13 @@ Se inicia una nueva fase enfocada en refinar la marca personal, mejorar la exper
         - Se introdujeron subtítulos ("Desarrollo Web y Tecnológico" y "Diseño Visual y Gráfico") en la sección de proyectos para organizar y diferenciar claramente las áreas de especialización.
 
 **Estado Actual**: El proyecto ha entrado en una fase de refinamiento profesional. El despliegue automático está verificado y se han implementado mejoras significativas en la interfaz y estructura de la página principal para reflejar mejor el enfoque tecnológico y la amplitud de habilidades del autor.
+
+---
+
+## 9. Refactorización de la Documentación
+
+- **Objetivo**: Estandarizar la documentación del proyecto siguiendo las mejores prácticas de la industria del software.
+- **Acciones**:
+    - Se ha renombrado `PROYECTO_DANISID_LOG.md` a `README.md`, convirtiéndolo en la puerta de entrada principal al repositorio. Este archivo ahora explica la estrategia, el diagnóstico y la evolución del proyecto.
+    - Se ha renombrado `INFORME_PROGRESO.md` a `CHANGELOG.md` para que sirva como un registro cronológico detallado de todos los cambios implementados.
+- **Resultado**: La documentación está ahora más organizada, es más clara y sigue las convenciones estándar, separando la visión estratégica (`README.md`) del historial de cambios (`CHANGELOG.md`).

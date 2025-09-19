@@ -42,10 +42,16 @@ El objetivo es refinar la página de inicio para que refleje claramente la nueva
     *   Modificar el texto del botón "Descargar CV" a simplemente "CV" o una palabra similar que indique la visualización del currículum.
 
 ### 1.5. Ampliar Laboratorio Creativo
-*   **Objetivo:** Reflejar los intereses y áreas de estudio actuales, como la ciberseguridad.
+*   **Objetivo:** Reflejar los intereses actuales y conceptualizar un nuevo proyecto técnico en el área de ciberseguridad.
 *   **Acciones:**
-    *   Añadir una nueva tarjeta en la sección "LABORATORIO CREATIVO" dedicada a la **Ciberseguridad**.
-    *   La descripción debe mencionar el uso de Kali Linux como sistema operativo principal y el interés en explorar este campo, conectándolo con los estudios en 42 Madrid.
+    *   **Tarjeta de Ciberseguridad:** Añadir una nueva tarjeta en la sección "LABORATORIO CREATIVO" dedicada a la **Ciberseguridad**. La descripción debe mencionar el uso de Kali Linux y el interés en explorar este campo.
+    *   **Conceptualización de Proyecto "Network Sentinel":**
+        *   **Idea:** Desarrollar una aplicación que sirva como un detector de conexiones externas al ordenador y a la red privada, ayudando a diferenciar entre conexiones seguras y no seguras.
+        *   **Paso 1 (Investigación):** Realizar una investigación para identificar si ya existen herramientas similares o iguales, analizar su funcionamiento y viabilidad.
+        *   **Visión a Largo Plazo:** Diseñar el concepto pensando en su escalabilidad para múltiples plataformas:
+            *   Widget para entornos de escritorio (Linux, GNOME).
+            *   Aplicación para Android.
+            *   Extensión para navegadores web.
 
 ---
 
