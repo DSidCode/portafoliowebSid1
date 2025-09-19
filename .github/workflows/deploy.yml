@@ -6,7 +6,8 @@ on:
   # Se ejecutará cada vez que hagas un "push" a la rama "main"
   push:
     branches:
-      - main
+      - main   # Rama principal por defecto en GitHub
+      - master # Rama principal por defecto en Git local
 
 # ¿Qué trabajos se deben realizar?
 jobs:
